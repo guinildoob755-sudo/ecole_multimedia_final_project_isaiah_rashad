@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=DM+Sans:wght@300;400&display=swap');
 
 .navbar {
   position: fixed;
@@ -14,21 +14,57 @@
   background: rgba(34, 34, 34, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(201, 160, 90, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 }
 
 .navbar-logo {
-  font-family: 'Bebas Neue', sans-serif;
+ font-family: 'Josefin Sans', sans-serif;
+font-weight: 100; /* pour l'ultra-fin */
   font-size: 28px;
   color: #F0EBE3;
   letter-spacing: 3px;
 }
 
+/* ===== LIENS DESKTOP ===== */
 .navbar-links {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   gap: 40px;
+
+  @media (max-width: 768px) {
+    /* Menu fermé par défaut sur mobile */
+    flex-direction: column;
+    gap: 0;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(34, 34, 34, 0.97);
+    backdrop-filter: blur(12px);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+}
+
+/* Menu ouvert sur mobile */
+.navbar-links.open {
+  @media (max-width: 768px) {
+    max-height: 400px;
+    padding: 16px 0;
+  }
+}
+
+.navbar-links li {
+  @media (max-width: 768px) {
+    border-bottom: 1px solid rgba(201, 160, 90, 0.08);
+  }
 }
 
 .navbar-links a {
@@ -42,7 +78,6 @@
   transition: color 0.3s;
   position: relative;
 
-  /* Barre animée en dessous */
   &::after {
     content: '';
     position: absolute;
@@ -58,10 +93,63 @@
     color: #F0EBE3;
     &::after { width: 100%; }
   }
+
+  @media (max-width: 768px) {
+    display: block;
+    padding: 16px 24px;
+    font-size: 14px;
+
+    &::after { display: none; }
+  }
 }
 
-/* Lien actif quand on est dans la section */
 .navbar-links a.active {
   color: #D93B35;
   &::after { width: 100%; }
+}
+
+.admin {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100; /* pour l'ultra-fin */
+  background-color: #222222;
+  min-height: 0.8vh;
+  padding: 10px;
+
+  @media (max-width: 768px) {
+    padding: 5px;
+  }
+}
+
+/* ===== BURGER ===== */
+.navbar-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.navbar-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #F0EBE3;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Burger animé en croix quand ouvert */
+.navbar-burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar-burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
