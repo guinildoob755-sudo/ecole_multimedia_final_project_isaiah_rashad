@@ -3,16 +3,22 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import Navbar from './NavBar'
+import Home from './home'
+import About from './about'
 
-function App() {
- 
+
+export default function App() {
   return (
-    <div>
-      <h1>Bienvenue sur mon projet 201_lab</h1>
-      <p>Premier test React réussi </p>
-    </div>
+    <>
+      <Navbar />
+      <Home />  
+      <About />
+      <section id="music">music</section>
+      <section id="contact">contact</section>
+    </>
   )
-} 
+}
 
 
-export default App
+
