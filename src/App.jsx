@@ -6,6 +6,7 @@ import './App.css'
 import Navbar from './NavBar'
 import Home from './home'
 import About from './about'
+import Contact from './contact'
 
 
 export default function App() {
@@ -14,8 +15,11 @@ export default function App() {
       <Navbar />
       <Home />  
       <About />
+      <section id="concert">concert</section>
       <section id="music">music</section>
-      <section id="contact">contact</section>
+      <Contact />
+      
+      
     </>
   )
 }

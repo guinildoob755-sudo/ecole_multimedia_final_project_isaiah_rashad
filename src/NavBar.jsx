@@ -1,15 +1,19 @@
 import { useState } from 'react'
 import { Link } from 'react-scroll'
 import './NavBar.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
     { to: 'home',    label: 'Accueil' },
     { to: 'about',   label: 'À propos' },
+    { to: 'concert', label: 'Concert' },
     { to: 'music',   label: 'Musique' },
     { to: 'contact', label: 'Contact' },
+   
   ]
 
   return (
@@ -34,9 +38,9 @@ export default function Navbar() {
         ))}
       </ul>
 
-      <button className='admin'>
-        admin
-      </button>
+       <button className='admin' >
+      admin
+    </button>
 
       <button
         className={`navbar-burger ${isOpen ? 'open' : ''}`}

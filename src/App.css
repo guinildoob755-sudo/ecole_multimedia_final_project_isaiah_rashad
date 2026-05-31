@@ -16,8 +16,10 @@ section {
 
 #home  { background: #222222; }
 #about { background: #3D2B25; }
-#music { background: #222222; }
-#contact { background: #3D2B25; }
+#concert { background: #222222; }
+#music { background: #3D2B25; }
+#contact { background:#222222 ; }
+
 
 /* ========== HOME SECTION ========== */
 
@@ -146,13 +148,14 @@ section {
   }
 }
 
+
 .btn-primary {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1px;
+  font-size: 14px; /* ✅ corrigé */
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 14px 36px;
-  background: #D93B35; /* rouge vif */
+  background: #D93B35;
   color: #F0EBE3;
   text-decoration: none;
   font-weight: 600;
@@ -164,19 +167,16 @@ section {
   }
 }
 
-.btn-ghost {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.12em;
+.home-tracklist li {
+  font-size: clamp(11px, 1.2vw, 14px); /* ✅ corrigé */
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 14px 36px;
-  border: 1px solid rgba(201, 160, 90, 0.3); /* beige doré transparent */
-  color: #C9A05A;
-  text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
+  color: #9A8070;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(201, 160, 90, 0.1);
+  transition: color 0.2s;
 
   &:hover {
-    border-color: #C9A05A;
     color: #F0EBE3;
   }
 }
@@ -248,4 +248,203 @@ section {
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.3; }
   50%       { opacity: 1; }
+}
+
+.about-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.album-card {
+  cursor: pointer;
+  position: relative;
+
+  /* Hover sur la card — monte légèrement */
+  &:hover {
+    transform: translateY(-6px);
+    transition: transform 0.3s ease;
+  }
+
+  /* Overlay qui apparaît au hover */
+  &:hover .album-overlay {
+    opacity: 1;
+  }
+
+  &:hover .album-cover img {
+    transform: scale(1.08);
+    filter: brightness(0.6);
+  }
+}
+
+.album-cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.4s ease;
+  }
+}
+
+/* Overlay au hover avec titre centré */
+.album-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+
+  .overlay-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #F0EBE3;
+  }
+
+  .overlay-year {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #C9A05A;
+    letter-spacing: 0.15em;
+  }
+
+  /* Ligne décorative */
+  &::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: #D93B35;
+    margin-bottom: 8px;
+  }
+}
+
+.album-placeholder {
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(
+    #3a3a3a 0% 25%,
+    #2a2a2a 0% 50%
+  ) 0 0 / 20px 20px;
+}
+
+/* Infos sous l'image */
+.album-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #F0EBE3;
+  margin: 10px 0 4px;
+  transition: color 0.3s;
+}
+
+.album-year {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #9A8070;
+  margin: 0;
+}
+
+.album-card:hover .album-title {
+  color: #D93B35;
+}
+
+.contact-content {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  /* Ligne décorative à gauche */
+  border-left: 2px solid #D93B35;
+  padding-left: 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 0 0 20px;
+    border-left-width: 1px;
+  }
+}
+
+.contact-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: #D93B35;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.contact-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  font-size: clamp(40px, 8vw, 100px);
+  color: #F0EBE3;
+  letter-spacing: 0.1em;
+  margin: 0 0 60px;
+}
+
+.contact-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* ✅ centre les icônes */
+
+  @media (max-width: 768px) {
+    gap: 14px;
+  }
+}
+
+.platform-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+
+  img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    transform: scale(1.12);
+    background: #D93B35;
+  }
+
+  @media (max-width: 768px) {
+    width: 64px;
+    height: 64px;
+
+    img { width: 28px; height: 28px; }
+  }
 }

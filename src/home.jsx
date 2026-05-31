@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import heroImg from './assets/hero.png'
-import firebase from 'firebase/compat/app'
+
 
 export default function Home() {
   return (
