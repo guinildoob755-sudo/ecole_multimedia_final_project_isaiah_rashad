@@ -9,9 +9,9 @@ export default function Navbar() {
 
   const links = [
     { to: 'home',    label: 'Accueil' },
-    { to: 'about',   label: 'À propos' },
+    { to: 'about',   label: 'Albums' },
     { to: 'concert', label: 'Concert' },
-    { to: 'music',   label: 'Musique' },
+    { to: 'merch',   label: 'Merch' },
     { to: 'contact', label: 'Contact' },
    
   ]

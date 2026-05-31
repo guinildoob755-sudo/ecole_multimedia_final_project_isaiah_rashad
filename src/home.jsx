@@ -44,7 +44,7 @@ export default function Home() {
             </ul>
           </motion.div>
 
-          <p className="home-sub">Musique sans frontières.</p>
+          <p className="home-sub">© 2026 Top Dawg Entertainment</p>
         </motion.div>
 
         <motion.div
