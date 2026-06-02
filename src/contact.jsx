@@ -9,9 +9,6 @@ const platforms = [
   { name: 'Apple Music', url: 'https://music.apple.com/us/artist/isaiah-rashad/605391263', icon: 'https://cdn.simpleicons.org/applemusic/white' },
   { name: 'x', url: 'https://x.com/isaiahrashad', icon: 'https://cdn.simpleicons.org/x/white' },
   { name: 'Instagram', url: 'https://www.instagram.com/isaiahrashad/', icon: 'https://cdn.simpleicons.org/instagram/white' },
-
-  
-
   
 ]
 

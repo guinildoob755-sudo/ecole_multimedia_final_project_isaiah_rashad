@@ -1,19 +1,17 @@
 import { useState } from 'react'
 import { Link } from 'react-scroll'
 import './NavBar.css'
-import { useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
-  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
-    { to: 'home',    label: 'Accueil' },
-    { to: 'about',   label: 'Albums' },
+    { to: 'home', label: 'Accueil' },
+    { to: 'presentation', label: 'Présentation' },
+    { to: 'about', label: 'Albums' },
     { to: 'concert', label: 'Concert' },
-    { to: 'merch',   label: 'Merch' },
+    { to: 'merch', label: 'Merch' },
     { to: 'contact', label: 'Contact' },
-   
   ]
 
   return (
@@ -25,9 +23,9 @@ export default function Navbar() {
           <li key={to}>
             <Link
               to={to}
-              smooth={true}
+              smooth
               duration={600}
-              spy={true}
+              spy
               activeClass="active"
               offset={-80}
               onClick={() => setIsOpen(false)}
@@ -38,16 +36,14 @@ export default function Navbar() {
         ))}
       </ul>
 
-       <button className='admin' >
-      admin
-    </button>
-
       <button
         className={`navbar-burger ${isOpen ? 'open' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Menu"
       >
-        <span /><span /><span />
+        <span />
+        <span />
+        <span />
       </button>
     </nav>
   )

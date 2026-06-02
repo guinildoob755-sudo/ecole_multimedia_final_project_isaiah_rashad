@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion'
 
-import cilvia from './assets/cilvia.png'
 import sunsTirade from './assets/suns-tirade.png'
 import dawit from './assets/dawit.png'
 import itsBeenAwful from './assets/its-been-awful.png'
 
 
 const albums = [
-  { id: 1, title: "Cilvia Demo", year: "2014", img: cilvia },
   { id: 2, title: "The Sun's Tirade", year: "2016", img: sunsTirade },
   { id: 3, title: "Dawit", year: "2019", img: dawit },
   { id: 4, title: "It's Been Awful", year: "2024", img: itsBeenAwful },

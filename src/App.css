@@ -1,12 +1,34 @@
-/* ========== SCROLL SECTIONS ========== */
+/* ================================================
+   APP.CSS — Site Artiste Musical
+   Charte graphique :
+   - Rouge vif    : #D93B35
+   - Brun orangé  : #B5522A
+   - Beige doré   : #C9A05A
+   - Brun foncé   : #3D2B25
+   - Noir charbon : #222222
+   - Blanc cassé  : #F0EBE3
+   Fonts : Josefin Sans (100/300/400) + DM Sans (300/400)
+================================================ */
 
+/* ================================================
+   IMPORT FONTS
+================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=DM+Sans:wght@300;400&display=swap');
+
+
+/* ================================================
+   SECTIONS — BASE
+   Chaque section occupe au moins tout l'écran.
+   scroll-margin-top compense la navbar fixe (70px).
+   align-items: flex-start = contenu aligné à gauche
+================================================ */
 section {
   min-height: 100vh;
   padding: 80px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* ✅ titres à gauche */
   scroll-margin-top: 70px;
 
   @media (max-width: 1024px) {
@@ -14,16 +36,104 @@ section {
   }
 }
 
-#home  { background: #222222; }
-#about { background: #3D2B25; }
-#concert { background: #222222; }
-#music { background: #3D2B25; }
-#contact { background:#222222 ; }
+/* HERO */
+#home {
+  background: linear-gradient(
+    135deg,
+    #0f0f0f 0%,
+    #1a1a1a 50%,
+    #2d1e1a 100%
+  );
+}
 
+/* PRESENTATION */
+#presentation {
+  background: linear-gradient(
+    135deg,
+    #2d1e1a 0%,
+    #3d2b25 50%,
+    #5a3428 100%
+  );
+}
 
-/* ========== HOME SECTION ========== */
+/* ALBUMS */
+#about {
+  background: linear-gradient(
+    135deg,
+    #1a1a1a 0%,
+    #2b1f1b 50%,
+    #3d2b25 100%
+  );
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=DM+Sans:wght@300;400&display=swap');
+/* CONCERTS */
+#concert {
+  background: linear-gradient(
+    135deg,
+    #121212 0%,
+    #1f1f1f 50%,
+    #2a2a2a 100%
+  );
+}
+
+/* MUSIC */
+#music {
+  background: linear-gradient(
+    135deg,
+    #2a1d18 0%,
+    #3d2b25 50%,
+    #6b3a2f 100%
+  );
+}
+
+/* MERCH */
+#merch {
+  background: linear-gradient(
+    135deg,
+    #0d0d0d 0%,
+    #171717 50%,
+    #262626 100%
+  );
+}
+
+/* CONTACT */
+#contact {
+  background: linear-gradient(
+    135deg,
+    #1a1a1a 0%,
+    #2c1f1a 50%,
+    #3d2b25 100%
+  );
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(217, 59, 53, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ================================================
+   HOME — Section principale
+   Structure : texte à gauche + image à droite
+   Effets : texte géant en arrière-plan (home-bg-text)
+            halo coloré sous l'image (home-img-glow)
+            animations fadeUp au chargement
+================================================ */
 
 #home {
   position: relative;
@@ -34,12 +144,13 @@ section {
   justify-content: center;
 }
 
+/* Texte décoratif en arrière-plan — outline très subtil */
 .home-bg-text {
   position: absolute;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: clamp(160px, 30vw, 380px);
   color: transparent;
-  -webkit-text-stroke: 1px rgba(201, 160, 90, 0.08); /* beige doré subtil */
+  -webkit-text-stroke: 1px rgba(201, 160, 90, 0.08);
   user-select: none;
   pointer-events: none;
   top: 50%;
@@ -49,6 +160,7 @@ section {
   z-index: 0;
 }
 
+/* Conteneur principal : texte + image côte à côte */
 .home-content {
   position: relative;
   z-index: 1;
@@ -59,6 +171,7 @@ section {
   width: 100%;
   padding: 0 40px;
 
+  /* Sur mobile : image au-dessus du texte */
   @media (max-width: 1024px) {
     flex-direction: column-reverse;
     gap: 40px;
@@ -67,45 +180,50 @@ section {
   }
 }
 
+/* Bloc texte — animation fadeUp au chargement */
 .home-text {
   flex: 1;
   animation: fadeUp 0.9s ease both;
 }
 
+/* Tag au-dessus du titre (ex: "Artist · Producer") */
 .home-tag {
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   font-weight: 300;
   letter-spacing: 0.2em;
-  color: #C9A05A; /* beige doré */
+  color: #C9A05A;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
+/* Titre principal XXL */
 .home-title {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100; 
+  font-weight: 100;
   font-size: clamp(30px, 12vw, 60px);
   line-height: 0.9;
-  color: #F0EBE3; /* blanc cassé */
+  color: #F0EBE3;
   margin: 0 0 24px;
   letter-spacing: -2px;
 }
 
-
+/* Lettre accent en rouge */
 .home-title-accent {
-  color: #D93B35; /* rouge vif */
+  color: #D93B35;
 }
 
+/* Sous-titre / description */
 .home-sub {
   font-family: 'DM Sans', sans-serif;
   font-size: 18px;
   font-weight: 300;
-  color: #9A8070; /* brun clair neutre */
+  color: #9A8070;
   line-height: 1.7;
   margin-bottom: 40px;
 }
 
+/* Conteneur des boutons CTA */
 .home-actions {
   display: flex;
   gap: 16px;
@@ -116,42 +234,10 @@ section {
   }
 }
 
-.home-tracklist {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  margin: 0 0 24px;
-}
-
-.home-tracklist ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-height: 200px; 
-  overflow-y: auto;
-
-  /* Style de la scrollbar */
-  scrollbar-width: thin;
-  scrollbar-color: #D93B35 transparent;
-}
-
-.home-tracklist li {
-  font-size: clamp(11px, 0vw, 14px);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #9A8070;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(201, 160, 90, 0.1);
-  transition: color 0.2s;
-
-  &:hover {
-    color: #F0EBE3;
-  }
-}
-
-
+/* Bouton principal — fond rouge */
 .btn-primary {
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px; /* ✅ corrigé */
+  font-size: 14px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 14px 36px;
@@ -167,8 +253,43 @@ section {
   }
 }
 
+/* Bouton ghost — contour beige doré */
+.btn-ghost {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: 1px solid rgba(201, 160, 90, 0.3);
+  color: #C9A05A;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: #C9A05A;
+    color: #F0EBE3;
+  }
+}
+
+/* Tracklist — liste scrollable des morceaux */
+.home-tracklist {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  margin: 0 0 24px;
+}
+
+.home-tracklist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px; /* hauteur fixe = scroll interne */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #D93B35 transparent;
+}
+
 .home-tracklist li {
-  font-size: clamp(11px, 1.2vw, 14px); /* ✅ corrigé */
+  font-size: clamp(11px, 1.2vw, 14px);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #9A8070;
@@ -181,7 +302,7 @@ section {
   }
 }
 
-/* Image */
+/* Image héro — délai 0.2s pour décaler l'animation */
 .home-img-wrapper {
   position: relative;
   flex: 1;
@@ -190,6 +311,7 @@ section {
   animation: fadeUp 0.9s 0.2s ease both;
 }
 
+/* Halo coloré sous l'image */
 .home-img-glow {
   position: absolute;
   bottom: 0;
@@ -197,7 +319,7 @@ section {
   transform: translateX(-50%);
   width: 60%;
   height: 40%;
-  background: radial-gradient(ellipse, rgba(181, 82, 42, 0.25), transparent 70%); /* brun orangé */
+  background: radial-gradient(ellipse, rgba(181, 82, 42, 0.25), transparent 70%);
   filter: blur(30px);
   z-index: 0;
 }
@@ -211,7 +333,7 @@ section {
   filter: grayscale(10%) contrast(1.05);
 }
 
-/* Scroll hint */
+/* Indicateur de scroll — ligne pulsante en bas */
 .home-scroll-hint {
   position: absolute;
   bottom: 32px;
@@ -239,17 +361,30 @@ section {
   animation: scrollPulse 2s ease infinite;
 }
 
-/* Animations */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+/* ================================================
+   ABOUT — Galerie Albums
+   Grille 3 colonnes avec effet hover :
+   zoom image + overlay titre/année
+================================================ */
+
+/* Titre de section aligné à gauche */
+.about-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  font-size: clamp(40px, 8vw, 100px);
+  color: #F0EBE3;
+  letter-spacing: 0.1em;
+  margin-bottom: 48px;
+  text-align: left; /* ✅ titre à gauche */
 }
 
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; }
-  50%       { opacity: 1; }
+.about-content {
+  width: 100%;
+  max-width: 1100px;
 }
 
+/* Grille 3 colonnes responsive */
 .about-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -266,27 +401,29 @@ section {
   }
 }
 
+/* Card album — monte au hover */
 .album-card {
   cursor: pointer;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
 
-  /* Hover sur la card — monte légèrement */
   &:hover {
     transform: translateY(-6px);
-    transition: transform 0.3s ease;
   }
 
-  /* Overlay qui apparaît au hover */
-  &:hover .album-overlay {
-    opacity: 1;
-  }
-
+  /* Déclenche l'overlay au hover */
+  &:hover .album-overlay { opacity: 1; }
   &:hover .album-cover img {
     transform: scale(1.08);
     filter: brightness(0.6);
   }
+  &:hover .album-title { color: #D93B35; }
 }
 
+/* Image carrée */
 .album-cover {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -301,7 +438,7 @@ section {
   }
 }
 
-/* Overlay au hover avec titre centré */
+/* Overlay centré — visible au hover */
 .album-overlay {
   position: absolute;
   inset: 0;
@@ -314,23 +451,7 @@ section {
   transition: opacity 0.3s ease;
   z-index: 2;
 
-  .overlay-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #F0EBE3;
-  }
-
-  .overlay-year {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    color: #C9A05A;
-    letter-spacing: 0.15em;
-  }
-
-  /* Ligne décorative */
+  /* Ligne rouge décorative au-dessus du titre */
   &::before {
     content: '';
     width: 30px;
@@ -340,6 +461,23 @@ section {
   }
 }
 
+.overlay-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #F0EBE3;
+}
+
+.overlay-year {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: #C9A05A;
+  letter-spacing: 0.15em;
+}
+
+/* Placeholder damier en attendant les vraies images */
 .album-placeholder {
   width: 100%;
   height: 100%;
@@ -353,11 +491,12 @@ section {
 .album-title {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
-  font-size: 12px;
-  letter-spacing: 0.2em;
+  font-size: 13px;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #F0EBE3;
-  margin: 10px 0 4px;
+  margin: 12px 0 4px;
+  text-align: left;
   transition: color 0.3s;
 }
 
@@ -366,88 +505,15 @@ section {
   font-size: 11px;
   color: #9A8070;
   margin: 0;
+  text-align: left;
 }
 
-.album-card:hover .album-title {
-  color: #D93B35;
-}
 
-.contact-content {
-  width: 100%;
-  max-width: 1100px;
-  padding: 0 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  /* Ligne décorative à gauche */
-  border-left: 2px solid #D93B35;
-  padding-left: 40px;
-
-  @media (max-width: 768px) {
-    padding: 0 0 0 20px;
-    border-left-width: 1px;
-  }
-}
-
-.contact-label {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  font-size: 13px;
-  letter-spacing: 0.3em;
-  color: #D93B35;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.contact-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  font-size: clamp(40px, 8vw, 100px);
-  color: #F0EBE3;
-  letter-spacing: 0.1em;
-  margin: 0 0 60px;
-}
-
-.contact-platforms {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* ✅ centre les icônes */
-
-  @media (max-width: 768px) {
-    gap: 14px;
-  }
-}
-
-.platform-btn {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: #111;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s, background 0.3s;
-
-  img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-  }
-
-  &:hover {
-    transform: scale(1.12);
-    background: #D93B35;
-  }
-
-  @media (max-width: 768px) {
-    width: 64px;
-    height: 64px;
-
-    img { width: 28px; height: 28px; }
-  }
-}
+/* ================================================
+   CONCERT — Liste des dates
+   Grille 2 colonnes, chaque ligne = une date
+   Effet hover : décalage à droite + bordure rouge
+================================================ */
 
 .concert-content {
   width: 100%;
@@ -459,6 +525,7 @@ section {
   }
 }
 
+/* Petit label au-dessus du titre */
 .concert-label {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 100;
@@ -467,6 +534,7 @@ section {
   color: #D93B35;
   text-transform: uppercase;
   margin-bottom: 8px;
+  text-align: left; /* ✅ */
 }
 
 .concert-title {
@@ -476,8 +544,10 @@ section {
   color: #F0EBE3;
   letter-spacing: 0.1em;
   margin: 0 0 60px;
+  text-align: left; /* ✅ */
 }
 
+/* Grille 2 colonnes responsive */
 .concert-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -487,6 +557,8 @@ section {
     grid-template-columns: 1fr;
   }
 }
+
+/* Ligne d'une date de concert */
 .concert-row {
   display: flex;
   align-items: center;
@@ -494,12 +566,13 @@ section {
   padding: 24px 0;
   border-bottom: 1px solid rgba(201, 160, 90, 0.1);
   gap: 20px;
-  transition: background 0.3s;
+  transition: padding-left 0.3s, border-color 0.3s;
 
   &:first-child {
     border-top: 1px solid rgba(201, 160, 90, 0.1);
   }
 
+  /* Décalage à droite + bordure rouge au hover */
   &:hover {
     padding-left: 12px;
     border-bottom-color: #D93B35;
@@ -512,6 +585,7 @@ section {
   }
 }
 
+/* Ville + ligne pointillée + date */
 .concert-info {
   display: flex;
   align-items: center;
@@ -527,6 +601,7 @@ section {
   white-space: nowrap;
 }
 
+/* Ligne pointillée entre ville et date */
 .concert-dots {
   flex: 1;
   max-width: 120px;
@@ -562,6 +637,7 @@ section {
   }
 }
 
+/* Bouton billetterie — ghost beige, rouge au hover */
 .concert-btn {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 11px;
@@ -582,12 +658,12 @@ section {
   }
 }
 
-/* ========== MERCH SECTION ========== */
 
-#merch {
-  background: #1a1a1a;
-  align-items: flex-start;
-}
+/* ================================================
+   MERCH — Boutique
+   Grille 4 colonnes, cards avec overlay au hover
+   Bouton "Ajouter au panier" apparaît au hover
+================================================ */
 
 .merch-content {
   width: 100%;
@@ -601,8 +677,10 @@ section {
   color: #F0EBE3;
   letter-spacing: 0.05em;
   margin-bottom: 40px;
+  text-align: left; /* ✅ */
 }
 
+/* Grille 4 colonnes responsive */
 .merch-gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -623,19 +701,18 @@ section {
   }
 }
 
+/* Card produit */
 .merch-card {
   cursor: pointer;
 
-  &:hover .merch-overlay {
-    opacity: 1;
-  }
-
+  &:hover .merch-overlay { opacity: 1; }
   &:hover .merch-img img {
     transform: scale(1.05);
     filter: brightness(0.5);
   }
 }
 
+/* Image carrée avec bordure arrondie */
 .merch-img {
   position: relative;
   width: 100%;
@@ -653,13 +730,14 @@ section {
   }
 }
 
+/* Fond noir pour les images manquantes */
 .merch-placeholder {
   width: 100%;
   height: 100%;
   background: #111;
 }
 
-/* Overlay bouton au hover */
+/* Overlay avec bouton panier en bas */
 .merch-overlay {
   position: absolute;
   inset: 0;
@@ -671,6 +749,7 @@ section {
   transition: opacity 0.3s ease;
 }
 
+/* Bouton "Ajouter au panier" */
 .merch-btn {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
@@ -688,6 +767,7 @@ section {
   }
 }
 
+/* Catégorie + prix sur la même ligne */
 .merch-info {
   display: flex;
   justify-content: space-between;
@@ -710,6 +790,7 @@ section {
   color: #F0EBE3;
 }
 
+/* Nom du produit */
 .merch-name {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 100;
@@ -718,4 +799,205 @@ section {
   color: #9A8070;
   margin: 4px 0 0;
   text-transform: uppercase;
+}
+
+
+/* ================================================
+   CONTACT — Réseaux sociaux
+   Bordure rouge à gauche + icônes rondes
+================================================ */
+
+/* Bordure décorative rouge à gauche */
+.contact-content {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 2px solid #D93B35;
+
+  @media (max-width: 768px) {
+    padding-left: 20px;
+    border-left-width: 1px;
+  }
+}
+
+.contact-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: #D93B35;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-align: left; /* ✅ */
+}
+
+.contact-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  font-size: clamp(40px, 8vw, 100px);
+  color: #F0EBE3;
+  letter-spacing: 0.1em;
+  margin: 0 0 60px;
+  text-align: left; /* ✅ */
+}
+
+/* Icônes plateformes en cercles */
+.contact-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    gap: 14px;
+  }
+}
+
+/* Cercle icône — rouge au hover */
+.platform-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+
+  img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    transform: scale(1.12);
+    background: #D93B35;
+  }
+
+  @media (max-width: 768px) {
+    width: 64px;
+    height: 64px;
+
+    img { width: 28px; height: 28px; }
+  }
+}
+
+
+/* ================================================
+   ANIMATIONS GLOBALES
+================================================ */
+
+/* Apparition en montant — utilisé sur home-text et home-img */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulsation de l'indicateur de scroll */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+
+/* ================================================
+   PRESENTATION — Galerie artistique immersive
+   Style : expo / portfolio / mood artistique
+================================================ */
+
+.presentation-content {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Titre de section */
+.presentation-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  font-size: clamp(40px, 8vw, 100px);
+  color: #F0EBE3;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+/* Sous-texte optionnel */
+.presentation-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #9A8070;
+  margin-bottom: 40px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Grille des images */
+.presentation-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Image item */
+.presentation-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid rgba(201, 160, 90, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Image */ 
+.presentation-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(10%) contrast(1.05);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Hover effet expo */
+.presentation-item:hover {
+  transform: translateY(-6px);
+  border-color: #D93B35;
+}
+
+.presentation-item:hover img {
+  transform: scale(1.08);
+  filter: grayscale(0%) contrast(1.1);
+}
+
+/* Overlay subtil artistique */
+.presentation-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(217, 59, 53, 0.08),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.presentation-item:hover::after {
+  opacity: 1;
 }
