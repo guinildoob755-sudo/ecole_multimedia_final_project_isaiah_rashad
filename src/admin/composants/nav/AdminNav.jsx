@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase";
 
 export default function AdminNav() {
-  const navigate = useNavigate();
+  const navigate  = useNavigate();
+  const location  = useLocation();
 
   const logout = async () => {
     await signOut(auth);
@@ -12,19 +13,28 @@ export default function AdminNav() {
 
   return (
     <nav className="admin-nav">
-      <h2>LAB201</h2>
 
-      <Link to="/admin/dashboard">
-        Dashboard
-      </Link>
+      <div className="admin-nav-logo">LAB201</div>
 
-      <Link to="/admin/add-date">
-        Ajouter une date
-      </Link>
+      <div className="admin-nav-links">
+        <Link
+          to="/admin/dashboard"
+          className={location.pathname === "/admin/dashboard" ? "active" : ""}
+        >
+          Dashboard
+        </Link>
+        <Link
+          to="/admin/add-date"
+          className={location.pathname === "/admin/add-date" ? "active" : ""}
+        >
+          Ajouter une date
+        </Link>
+      </div>
 
-      <button onClick={logout}>
+      <button className="admin-logout-btn" onClick={logout}>
         Déconnexion
       </button>
+
     </nav>
   );
 }

@@ -30,7 +30,7 @@ export default function Merch() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="merch-title">/ MERCH</h1>
+          <h1 className="merch-title">MERCH</h1>
         </motion.div>
 
         <div className="merch-gallery">

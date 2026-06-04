@@ -7,20 +7,47 @@
    - Brun foncé   : #3D2B25
    - Noir charbon : #222222
    - Blanc cassé  : #F0EBE3
-   Fonts : Josefin Sans (100/300/400) + DM Sans (300/400)
+   Fonts :
+   - Brunson Rough → titres principaux
+   - Tahyp         → textes secondaires, labels, listes
+   - DM Sans       → corps de texte, boutons
 ================================================ */
 
 /* ================================================
    IMPORT FONTS
+   ⚠️ @font-face AVANT @import Google
 ================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=DM+Sans:wght@300;400&display=swap');
+
+@font-face {
+  font-family: 'Brunson Rough';
+  src: url('./assets/fonts/Brunson-Rough.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Brunson';
+  src: url('./assets/fonts/Brunson.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Tahyp';
+  src: url('./assets/fonts/Tahyp-rahy-ter22.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Tahyp Dirty';
+  src: url('./assets/fonts/Tahyp-rahy-ter22Dirty.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Tahyp Verydirty';
+  src: url('./assets/fonts/Tahyp-rahy-ter22Verydirty.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&display=swap');
 
 
 /* ================================================
    SECTIONS — BASE
-   Chaque section occupe au moins tout l'écran.
-   scroll-margin-top compense la navbar fixe (70px).
-   align-items: flex-start = contenu aligné à gauche
 ================================================ */
 section {
   min-height: 100vh;
@@ -28,89 +55,17 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; /* ✅ titres à gauche */
+  align-items: flex-start;
   scroll-margin-top: 70px;
+  position: relative;
+  overflow: hidden;
 
   @media (max-width: 1024px) {
     padding: 60px 20px;
   }
 }
 
-/* HERO */
-#home {
-  background: linear-gradient(
-    135deg,
-    #0f0f0f 0%,
-    #1a1a1a 50%,
-    #2d1e1a 100%
-  );
-}
-
-/* PRESENTATION */
-#presentation {
-  background: linear-gradient(
-    135deg,
-    #2d1e1a 0%,
-    #3d2b25 50%,
-    #5a3428 100%
-  );
-}
-
-/* ALBUMS */
-#about {
-  background: linear-gradient(
-    135deg,
-    #1a1a1a 0%,
-    #2b1f1b 50%,
-    #3d2b25 100%
-  );
-}
-
-/* CONCERTS */
-#concert {
-  background: linear-gradient(
-    135deg,
-    #121212 0%,
-    #1f1f1f 50%,
-    #2a2a2a 100%
-  );
-}
-
-/* MUSIC */
-#music {
-  background: linear-gradient(
-    135deg,
-    #2a1d18 0%,
-    #3d2b25 50%,
-    #6b3a2f 100%
-  );
-}
-
-/* MERCH */
-#merch {
-  background: linear-gradient(
-    135deg,
-    #0d0d0d 0%,
-    #171717 50%,
-    #262626 100%
-  );
-}
-
-/* CONTACT */
-#contact {
-  background: linear-gradient(
-    135deg,
-    #1a1a1a 0%,
-    #2c1f1a 50%,
-    #3d2b25 100%
-  );
-}
-
-section {
-  position: relative;
-  overflow: hidden;
-}
-
+/* Halo rouge décoratif en haut à droite de chaque section */
 section::before {
   content: '';
   position: absolute;
@@ -119,35 +74,34 @@ section::before {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(217, 59, 53, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(217, 59, 53, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
+/* Fonds dégradés par section */
+#home         { background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d1e1a 100%); }
+#presentation { background: linear-gradient(135deg, #2d1e1a 0%, #3d2b25 50%, #5a3428 100%); }
+#about        { background: linear-gradient(135deg, #1a1a1a 0%, #2b1f1b 50%, #3d2b25 100%); }
+#concert      { background: linear-gradient(135deg, #121212 0%, #1f1f1f 50%, #2a2a2a 100%); }
+#music        { background: linear-gradient(135deg, #2a1d18 0%, #3d2b25 50%, #6b3a2f 100%); }
+#merch        { background: linear-gradient(135deg, #0d0d0d 0%, #171717 50%, #262626 100%); }
+#contact      { background: linear-gradient(135deg, #1a1a1a 0%, #2c1f1a 50%, #3d2b25 100%); }
+
+
 /* ================================================
    HOME — Section principale
-   Structure : texte à gauche + image à droite
-   Effets : texte géant en arrière-plan (home-bg-text)
-            halo coloré sous l'image (home-img-glow)
-            animations fadeUp au chargement
 ================================================ */
 
 #home {
-  position: relative;
-  overflow: hidden;
-  background: #222222;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Texte décoratif en arrière-plan — outline très subtil */
+/* Texte décoratif en arrière-plan */
 .home-bg-text {
   position: absolute;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Brunson', sans-serif; /* ✅ */
   font-size: clamp(160px, 30vw, 380px);
   color: transparent;
   -webkit-text-stroke: 1px rgba(201, 160, 90, 0.08);
@@ -160,7 +114,7 @@ section::before {
   z-index: 0;
 }
 
-/* Conteneur principal : texte + image côte à côte */
+/* Conteneur principal : texte + image */
 .home-content {
   position: relative;
   z-index: 1;
@@ -171,7 +125,6 @@ section::before {
   width: 100%;
   padding: 0 40px;
 
-  /* Sur mobile : image au-dessus du texte */
   @media (max-width: 1024px) {
     flex-direction: column-reverse;
     gap: 40px;
@@ -180,40 +133,35 @@ section::before {
   }
 }
 
-/* Bloc texte — animation fadeUp au chargement */
 .home-text {
   flex: 1;
   animation: fadeUp 0.9s ease both;
 }
 
-/* Tag au-dessus du titre (ex: "Artist · Producer") */
+/* Tag au-dessus du titre */
 .home-tag {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 13px;
-  font-weight: 300;
   letter-spacing: 0.2em;
   color: #C9A05A;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
-/* Titre principal XXL */
+/* Titre principal XXL — Brunson Rough */
 .home-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
+  font-family: 'Brunson', sans-serif; /* ✅ */
   font-size: clamp(30px, 12vw, 60px);
   line-height: 0.9;
   color: #F0EBE3;
-  margin: 0 0 24px;
-  letter-spacing: -2px;
+  margin: 0 0 44px;
+  letter-spacing: 2px;
 }
 
-/* Lettre accent en rouge */
 .home-title-accent {
   color: #D93B35;
 }
 
-/* Sous-titre / description */
 .home-sub {
   font-family: 'DM Sans', sans-serif;
   font-size: 18px;
@@ -223,7 +171,6 @@ section::before {
   margin-bottom: 40px;
 }
 
-/* Conteneur des boutons CTA */
 .home-actions {
   display: flex;
   gap: 16px;
@@ -234,7 +181,7 @@ section::before {
   }
 }
 
-/* Bouton principal — fond rouge */
+/* Bouton principal */
 .btn-primary {
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
@@ -253,7 +200,7 @@ section::before {
   }
 }
 
-/* Bouton ghost — contour beige doré */
+/* Bouton ghost */
 .btn-ghost {
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
@@ -271,10 +218,9 @@ section::before {
   }
 }
 
-/* Tracklist — liste scrollable des morceaux */
+/* Tracklist scrollable */
 .home-tracklist {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   margin: 0 0 24px;
 }
 
@@ -282,7 +228,7 @@ section::before {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 200px; /* hauteur fixe = scroll interne */
+  max-height: 200px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #D93B35 transparent;
@@ -297,12 +243,10 @@ section::before {
   border-bottom: 1px solid rgba(201, 160, 90, 0.1);
   transition: color 0.2s;
 
-  &:hover {
-    color: #F0EBE3;
-  }
+  &:hover { color: #F0EBE3; }
 }
 
-/* Image héro — délai 0.2s pour décaler l'animation */
+/* Image héro */
 .home-img-wrapper {
   position: relative;
   flex: 1;
@@ -311,7 +255,6 @@ section::before {
   animation: fadeUp 0.9s 0.2s ease both;
 }
 
-/* Halo coloré sous l'image */
 .home-img-glow {
   position: absolute;
   bottom: 0;
@@ -333,7 +276,7 @@ section::before {
   filter: grayscale(10%) contrast(1.05);
 }
 
-/* Indicateur de scroll — ligne pulsante en bas */
+/* Indicateur de scroll */
 .home-scroll-hint {
   position: absolute;
   bottom: 32px;
@@ -346,7 +289,7 @@ section::before {
   z-index: 2;
 
   span {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Tahyp', sans-serif; /* ✅ */
     font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -363,20 +306,95 @@ section::before {
 
 
 /* ================================================
-   ABOUT — Galerie Albums
-   Grille 3 colonnes avec effet hover :
-   zoom image + overlay titre/année
+   PRESENTATION
 ================================================ */
 
-/* Titre de section aligné à gauche */
+#presentation {
+  align-items: center;
+}
+
+.presentation-content {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  text-align: left;
+}
+
+.presentation-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Label de section — Tahyp */
+.presentation-label {
+  font-family: 'Tahyp', sans-serif; /* ✅ */
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #D93B35;
+  margin: 0;
+}
+
+.presentation-body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #ffffff;
+  margin: 0;
+
+  em {
+    color: #F0EBE3;
+    font-style: normal;
+  }
+}
+
+.presentation-closing {
+  color: #ffffff;
+  font-style: italic;
+}
+
+/* Citation */
+.presentation-quote {
+  font-family: 'Tahyp', sans-serif; /* ✅ */
+  font-size: 16px;
+  line-height: 1.8;
+  color: #dd1d00;
+  border-left: 2px solid #D93B35;
+  padding-left: 20px;
+  margin: 10px 0 0;
+}
+
+/* Phrase finale — Brunson Rough */
+.presentation-chapter {
+  border-top: 1px solid rgba(201, 160, 90, 0.15);
+  padding-top: 40px;
+
+  p {
+    font-family: 'Brunson Rough', sans-serif; /* ✅ */
+    font-size: clamp(20px, 4vw, 36px);
+    letter-spacing: 0.1em;
+    color: #F0EBE3;
+    margin: 0;
+  }
+}
+
+
+/* ================================================
+   ABOUT — Galerie Albums
+================================================ */
+
+/* Titre — Brunson Rough */
 .about-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  font-size: clamp(40px, 8vw, 100px);
+  font-family: 'Brunson', sans-serif; /* ✅ */
+  font-size: clamp(40px, 8vw, 72px);
   color: #F0EBE3;
   letter-spacing: 0.1em;
   margin-bottom: 48px;
-  text-align: left; /* ✅ titre à gauche */
+  text-align: left;
 }
 
 .about-content {
@@ -384,24 +402,16 @@ section::before {
   max-width: 1100px;
 }
 
-/* Grille 3 colonnes responsive */
 .about-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   width: 100%;
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
+  @media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (max-width: 480px) { grid-template-columns: 1fr; }
 }
 
-/* Card album — monte au hover */
 .album-card {
   cursor: pointer;
   position: relative;
@@ -410,35 +420,26 @@ section::before {
   align-items: flex-start;
   transition: transform 0.3s ease;
 
-  &:hover {
-    transform: translateY(-6px);
-  }
-
-  /* Déclenche l'overlay au hover */
+  &:hover { transform: translateY(-6px); }
   &:hover .album-overlay { opacity: 1; }
-  &:hover .album-cover img {
-    transform: scale(1.08);
-    filter: brightness(0.6);
-  }
+  &:hover .album-cover img { transform: scale(1.08); filter: brightness(0.6); }
   &:hover .album-title { color: #D93B35; }
 }
 
-/* Image carrée */
 .album-cover {
   width: 100%;
   aspect-ratio: 1 / 1;
-  overflow: hidden;
   position: relative;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* ✅ image entière visible */
     transition: transform 0.5s ease, filter 0.4s ease;
   }
 }
 
-/* Overlay centré — visible au hover */
+
 .album-overlay {
   position: absolute;
   inset: 0;
@@ -451,7 +452,6 @@ section::before {
   transition: opacity 0.3s ease;
   z-index: 2;
 
-  /* Ligne rouge décorative au-dessus du titre */
   &::before {
     content: '';
     width: 30px;
@@ -461,9 +461,9 @@ section::before {
   }
 }
 
+/* Overlay — Tahyp */
 .overlay-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 16px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -477,20 +477,15 @@ section::before {
   letter-spacing: 0.15em;
 }
 
-/* Placeholder damier en attendant les vraies images */
 .album-placeholder {
   width: 100%;
   height: 100%;
-  background: repeating-conic-gradient(
-    #3a3a3a 0% 25%,
-    #2a2a2a 0% 50%
-  ) 0 0 / 20px 20px;
+  background: repeating-conic-gradient(#3a3a3a 0% 25%, #2a2a2a 0% 50%) 0 0 / 20px 20px;
 }
 
-/* Infos sous l'image */
+/* Nom album — Tahyp */
 .album-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 13px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -511,8 +506,6 @@ section::before {
 
 /* ================================================
    CONCERT — Liste des dates
-   Grille 2 colonnes, chaque ligne = une date
-   Effet hover : décalage à droite + bordure rouge
 ================================================ */
 
 .concert-content {
@@ -520,45 +513,38 @@ section::before {
   max-width: 1100px;
   padding: 0 40px;
 
-  @media (max-width: 768px) {
-    padding: 0 20px;
-  }
+  @media (max-width: 768px) { padding: 0 20px; }
 }
 
-/* Petit label au-dessus du titre */
+/* Label — Tahyp */
 .concert-label {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 13px;
   letter-spacing: 0.3em;
   color: #D93B35;
   text-transform: uppercase;
   margin-bottom: 8px;
-  text-align: left; /* ✅ */
+  text-align: left;
 }
 
+/* Titre — Brunson*/
 .concert-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  font-size: clamp(40px, 8vw, 100px);
+  font-family: 'Brunson', sans-serif; /* ✅ */
+  font-size: clamp(40px, 8vw, 90px);
   color: #F0EBE3;
   letter-spacing: 0.1em;
   margin: 0 0 60px;
-  text-align: left; /* ✅ */
+  text-align: left;
 }
 
-/* Grille 2 colonnes responsive */
 .concert-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px 40px;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
 }
 
-/* Ligne d'une date de concert */
 .concert-row {
   display: flex;
   align-items: center;
@@ -568,24 +554,12 @@ section::before {
   gap: 20px;
   transition: padding-left 0.3s, border-color 0.3s;
 
-  &:first-child {
-    border-top: 1px solid rgba(201, 160, 90, 0.1);
-  }
+  &:first-child { border-top: 1px solid rgba(201, 160, 90, 0.1); }
+  &:hover { padding-left: 12px; border-bottom-color: #D93B35; }
 
-  /* Décalage à droite + bordure rouge au hover */
-  &:hover {
-    padding-left: 12px;
-    border-bottom-color: #D93B35;
-  }
-
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 18px 0;
-  }
+  @media (max-width: 768px) { flex-wrap: wrap; gap: 10px; padding: 18px 0; }
 }
 
-/* Ville + ligne pointillée + date */
 .concert-info {
   display: flex;
   align-items: center;
@@ -593,15 +567,14 @@ section::before {
   flex: 1;
 }
 
+/* Ville — Tahyp */
 .concert-city {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: clamp(16px, 2vw, 22px);
   color: #F0EBE3;
   white-space: nowrap;
 }
 
-/* Ligne pointillée entre ville et date */
 .concert-dots {
   flex: 1;
   max-width: 120px;
@@ -631,17 +604,13 @@ section::before {
   flex: 1;
   text-align: center;
 
-  @media (max-width: 768px) {
-    text-align: left;
-    width: 100%;
-  }
+  @media (max-width: 768px) { text-align: left; width: 100%; }
 }
 
-/* Bouton billetterie — ghost beige, rouge au hover */
+/* Bouton billetterie — Tahyp */
 .concert-btn {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 11px;
-  font-weight: 300;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 10px 28px;
@@ -651,18 +620,12 @@ section::before {
   white-space: nowrap;
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 
-  &:hover {
-    background: #D93B35;
-    border-color: #D93B35;
-    color: #F0EBE3;
-  }
+  &:hover { background: #D93B35; border-color: #D93B35; color: #F0EBE3; }
 }
 
 
 /* ================================================
    MERCH — Boutique
-   Grille 4 colonnes, cards avec overlay au hover
-   Bouton "Ajouter au panier" apparaît au hover
 ================================================ */
 
 .merch-content {
@@ -670,49 +633,33 @@ section::before {
   max-width: 1100px;
 }
 
+/* Titre — Brunson Rough */
 .merch-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
+  font-family: 'Brunson', sans-serif; /* ✅ */
   font-size: clamp(32px, 6vw, 72px);
   color: #F0EBE3;
   letter-spacing: 0.05em;
   margin-bottom: 40px;
-  text-align: left; /* ✅ */
+  text-align: left;
 }
 
-/* Grille 4 colonnes responsive */
 .merch-gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
+  @media (max-width: 1024px) { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 768px)  { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (max-width: 480px)  { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
 
-/* Card produit */
 .merch-card {
   cursor: pointer;
 
   &:hover .merch-overlay { opacity: 1; }
-  &:hover .merch-img img {
-    transform: scale(1.05);
-    filter: brightness(0.5);
-  }
+  &:hover .merch-img img { transform: scale(1.05); filter: brightness(0.5); }
 }
 
-/* Image carrée avec bordure arrondie */
 .merch-img {
   position: relative;
   width: 100%;
@@ -730,14 +677,12 @@ section::before {
   }
 }
 
-/* Fond noir pour les images manquantes */
 .merch-placeholder {
   width: 100%;
   height: 100%;
   background: #111;
 }
 
-/* Overlay avec bouton panier en bas */
 .merch-overlay {
   position: absolute;
   inset: 0;
@@ -749,7 +694,6 @@ section::before {
   transition: opacity 0.3s ease;
 }
 
-/* Bouton "Ajouter au panier" */
 .merch-btn {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
@@ -762,12 +706,9 @@ section::before {
   cursor: pointer;
   transition: background 0.2s;
 
-  &:hover {
-    background: #B5522A;
-  }
+  &:hover { background: #B5522A; }
 }
 
-/* Catégorie + prix sur la même ligne */
 .merch-info {
   display: flex;
   justify-content: space-between;
@@ -775,25 +716,25 @@ section::before {
   margin-top: 10px;
 }
 
+/* Catégorie — Tahyp */
 .merch-category {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #C9A05A;
 }
 
+/* Prix — Tahyp */
 .merch-price {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 14px;
   color: #F0EBE3;
 }
 
-/* Nom du produit */
+/* Nom produit — Tahyp */
 .merch-name {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 13px;
   letter-spacing: 0.1em;
   color: #9A8070;
@@ -804,10 +745,8 @@ section::before {
 
 /* ================================================
    CONTACT — Réseaux sociaux
-   Bordure rouge à gauche + icônes rondes
 ================================================ */
 
-/* Bordure décorative rouge à gauche */
 .contact-content {
   width: 100%;
   max-width: 1100px;
@@ -817,45 +756,38 @@ section::before {
   gap: 16px;
   border-left: 2px solid #D93B35;
 
-  @media (max-width: 768px) {
-    padding-left: 20px;
-    border-left-width: 1px;
-  }
+  @media (max-width: 768px) { padding-left: 20px; border-left-width: 1px; }
 }
 
+/* Label — Tahyp */
 .contact-label {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
+  font-family: 'Tahyp', sans-serif; /* ✅ */
   font-size: 13px;
   letter-spacing: 0.3em;
   color: #D93B35;
   text-transform: uppercase;
   margin-bottom: 8px;
-  text-align: left; /* ✅ */
+  text-align: left;
 }
 
+/* Titre — Brunson */
 .contact-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  font-size: clamp(40px, 8vw, 100px);
+  font-family: 'Brunson', sans-serif; /* ✅ */
+  font-size: clamp(40px, 8vw, 72px);
   color: #F0EBE3;
   letter-spacing: 0.1em;
   margin: 0 0 60px;
-  text-align: left; /* ✅ */
+  text-align: left;
 }
 
-/* Icônes plateformes en cercles */
 .contact-platforms {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 
-  @media (max-width: 768px) {
-    gap: 14px;
-  }
+  @media (max-width: 768px) { gap: 14px; }
 }
 
-/* Cercle icône — rouge au hover */
 .platform-btn {
   width: 80px;
   height: 80px;
@@ -866,21 +798,13 @@ section::before {
   justify-content: center;
   transition: transform 0.3s, background 0.3s;
 
-  img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-  }
+  img { width: 36px; height: 36px; object-fit: contain; }
 
-  &:hover {
-    transform: scale(1.12);
-    background: #D93B35;
-  }
+  &:hover { transform: scale(1.12); background: #D93B35; }
 
   @media (max-width: 768px) {
     width: 64px;
     height: 64px;
-
     img { width: 28px; height: 28px; }
   }
 }
@@ -890,114 +814,12 @@ section::before {
    ANIMATIONS GLOBALES
 ================================================ */
 
-/* Apparition en montant — utilisé sur home-text et home-img */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Pulsation de l'indicateur de scroll */
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.3; }
   50%       { opacity: 1; }
-}
-
-/* ================================================
-   PRESENTATION — Galerie artistique immersive
-   Style : expo / portfolio / mood artistique
-================================================ */
-
-.presentation-content {
-  width: 100%;
-  max-width: 1100px;
-}
-
-/* Titre de section */
-.presentation-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  font-size: clamp(40px, 8vw, 100px);
-  color: #F0EBE3;
-  letter-spacing: 0.1em;
-  margin-bottom: 40px;
-  text-align: left;
-}
-
-/* Sous-texte optionnel */
-.presentation-sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: #9A8070;
-  margin-bottom: 40px;
-  max-width: 600px;
-  line-height: 1.6;
-}
-
-/* Grille des images */
-.presentation-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  width: 100%;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Image item */
-.presentation-item {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
-  cursor: pointer;
-  border: 1px solid rgba(201, 160, 90, 0.15);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-/* Image */ 
-.presentation-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(10%) contrast(1.05);
-  transition: transform 0.5s ease, filter 0.5s ease;
-}
-
-/* Hover effet expo */
-.presentation-item:hover {
-  transform: translateY(-6px);
-  border-color: #D93B35;
-}
-
-.presentation-item:hover img {
-  transform: scale(1.08);
-  filter: grayscale(0%) contrast(1.1);
-}
-
-/* Overlay subtil artistique */
-.presentation-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle,
-    rgba(217, 59, 53, 0.08),
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.presentation-item:hover::after {
-  opacity: 1;
 }

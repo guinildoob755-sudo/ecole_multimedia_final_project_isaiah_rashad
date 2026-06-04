@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import heroImg from './assets/hero.png'
+import heroImg from './assets/pochette_album-01.png'
 
 
 export default function Home() {
