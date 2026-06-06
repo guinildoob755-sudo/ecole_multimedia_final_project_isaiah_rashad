@@ -617,3 +617,92 @@
   margin-bottom: 24px;
   max-width: 700px;
 }
+
+/* Badge statut */
+.badge-soldout {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D93B35;
+  border: 1px solid rgba(217, 59, 53, 0.3);
+  padding: 4px 10px;
+}
+
+.badge-available {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  padding: 4px 10px;
+}
+
+/* Checkbox toggle sold out */
+.admin-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #9A8070;
+
+  input[type="checkbox"] {
+    accent-color: #D93B35;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+}
+
+.date-picker {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.date-picker-day {
+  width: 60px;
+  padding: 14px 10px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #F0EBE3;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  text-align: center;
+
+  &:focus { border-color: #D93B35; }
+}
+
+.date-picker-month {
+  flex: 1;
+  padding: 14px 10px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #F0EBE3;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+
+  &:focus { border-color: #D93B35; }
+
+  option { background: #111; }
+}
+
+.date-picker-year {
+  width: 80px;
+  padding: 14px 10px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #F0EBE3;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  text-align: center;
+
+  &:focus { border-color: #D93B35; }
+}
