@@ -1,6 +1,6 @@
 # Lab_201 – Web Project (École Multimédia / Fonderie de l’Image)
 
-## 🌐 Live Demo
+## Live Demo
 
 https://lab-14d8c.web.app/
 
