@@ -6,7 +6,7 @@ https://lab-14d8c.web.app/
 
 ---
 
-## 📌 Overview
+## Overview
 
 This project was developed as part of a group assignment at **École Multimédia**, in collaboration with a creative team.
 
@@ -16,7 +16,7 @@ The website is inspired by the **visual and artistic universe of Isaiah Rashad**
 
 ---
 
-## 🎧 Concept
+## Concept
 
 The project explores an immersive web experience built around an artistic universe inspired by Isaiah Rashad’s music.
 
@@ -29,7 +29,7 @@ It combines:
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - React (Vite)
 - Firebase (backend / database / hosting)
@@ -39,7 +39,7 @@ It combines:
 
 ---
 
-## ⚙️ Features
+## Features
 
 - Fully responsive and optimized website
 - Smooth animations and transitions
@@ -50,7 +50,7 @@ It combines:
 
 ---
 
-## 🛠️ Admin Panel
+## Admin Panel
 
 An admin interface was built to manage website content in real time, including:
 
@@ -60,7 +60,7 @@ An admin interface was built to manage website content in real time, including:
 
 ---
 
-## 🎯 My Role
+## My Role
 
 - Front-end development
 - Animation and interaction implementation
@@ -70,10 +70,10 @@ An admin interface was built to manage website content in real time, including:
 
 ---
 
-## 📁 Installation
+## Installation
 
 ```bash
 git clone https://github.com/guinildoob755-sudo/ecole_multimedia_final_project_isaiah_rashad.git
-cd your-project
+cd lab201
 npm install
 npm run dev
